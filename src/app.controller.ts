@@ -6,7 +6,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('datasource')
-  getDatasourece(@Query() query): string[] {
+  getDatasourece(@Query() query): { data: string[] } {
     return this.appService.getDatasource(query.search);
   }
 }

@@ -50,11 +50,15 @@ export class AppService {
   }
 
   //For initial demo purpose, added a States object array and returns String array
-  getDatasource(searchText: string): string[] {
+  getDatasource(searchText: string) {
     if (searchText) {
-      return this._filter(searchText);
+      return {
+        data: this._filter(searchText),
+      };
     } else {
-      return this.datasourceArray;
+      return {
+        data: this.datasourceArray,
+      };
     }
   }
 
@@ -62,7 +66,7 @@ export class AppService {
     const filterValue = inputTextOption.toLowerCase();
 
     return this.datasourceArray.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0,
+      (option) => option.toLowerCase().indexOf(filterValue) >= 0,
     );
   }
 }
